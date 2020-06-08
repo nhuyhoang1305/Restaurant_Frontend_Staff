@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "225990211771",
+    "firebase_url": "https://restaurantstaff-87f6b.firebaseio.com",
+    "project_id": "restaurantstaff-87f6b",
+    "storage_bucket": "restaurantstaff-87f6b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225990211771:android:a10dd2af06e838e2e3919e",
+        "android_client_info": {
+          "package_name": "com.uet.restaurant_staff"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225990211771-85ndtk5j80bu05gb68lve84mvgn6mtho.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uet.restaurant_staff",
+            "certificate_hash": "d66f73b88adc64213bf3f49eb3547e500b96d088"
+          }
+        },
+        {
+          "client_id": "225990211771-25q5skd8nabh86hu8v7qg91rf3i6555d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqbtNjKGdX1ZtRqPCaWErK0QZ2Zod13JY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225990211771-25q5skd8nabh86hu8v7qg91rf3i6555d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
