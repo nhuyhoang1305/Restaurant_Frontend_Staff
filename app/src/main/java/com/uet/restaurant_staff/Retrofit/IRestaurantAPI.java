@@ -30,10 +30,10 @@ public interface IRestaurantAPI {
     @POST("restaurantowner")
     @FormUrlEncoded
     Observable<UpdateRestaurantOwnerModel> updateRestaurantOwner(@HeaderMap Map<String, String> headers,
-                                                                 @Query("userPhone") String userPhone,
-                                                                 @Query("name") String name,
-                                                                 @Query("restaurantId") int id,
-                                                                 @Query("status") int status);
+                                                                 @Field("restaurantownerPhone") String userPhone,
+                                                                 @Field("restaurantownerName") String name,
+                                                                 @Field("restaurantownerId") int id,
+                                                                 @Field("restaurantownerStatus") int status);
 
     @GET("orderbyrestaurant")
     Observable<OrderModel> getOrder(@HeaderMap Map<String, String> headers,

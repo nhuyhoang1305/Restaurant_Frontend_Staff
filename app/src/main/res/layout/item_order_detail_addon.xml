@@ -71,7 +71,7 @@
                 <TextView
                     android:text="Add On"
                     android:textSize="22sp"
-                    android:fontFamily="@font/magnifika"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -96,7 +96,7 @@
                     android:id="@+id/tv_add_on"
                     android:text="Add On"
                     android:textSize="16sp"
-                    android:fontFamily="@font/magnifika"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

@@ -76,7 +76,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                                                         if (getKeyModel.isSuccess()){
                                                             //Write jwt to variable
                                                             Common.API_KEY = getKeyModel.getToken();
-                                                            //Log.d(TAG, "API_KEY: " + Common.API_KEY);
+                                                            Log.d(TAG, "API_KEY: " + Common.API_KEY);
                                                             //After we have account, we will get fbid and update token
                                                             Map<String, String> headers = new HashMap<>();
                                                             headers.put("Authorization", Common.buildJWT(Common.API_KEY));
@@ -93,9 +93,11 @@ public class SplashScreenActivity extends AppCompatActivity {
                                                                         mCompositeDisposable.add(mIRestaurantAPI.getRestaurantOwner(headers)
                                                                                 .subscribeOn(Schedulers.io())
                                                                                 .observeOn(AndroidSchedulers.mainThread())
-                                                                                .subscribe(userModel -> {
-                                                                                            if (userModel.isSuccess()){ // if user avaiable in db
-                                                                                                Common.currentRestaurantOwner = userModel.getResult().get(0);
+                                                                                .subscribe(restaurantownerModel -> {
+
+                                                                                            if (restaurantownerModel.isSuccess()){ // if user avaiable in db
+
+                                                                                                Common.currentRestaurantOwner = restaurantownerModel.getResult().get(0);
                                                                                                 Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
                                                                                                 startActivity(intent);
                                                                                                 finish();
@@ -152,8 +154,10 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void init() {
+        Log.d(TAG, "init: called!!");
         Paper.init(this);
         mDialog = new SpotsDialog.Builder().setContext(this).setCancelable(false).build();
-        mIRestaurantAPI = RetrofitClient.getInstance(Common.API_RESTAURANT_ENDPOINT).create(IRestaurantAPI.class);
+        mIRestaurantAPI = RetrofitClient.getInstance(Common.API_RESTAURANT_ENDPOINT)
+                .create(IRestaurantAPI.class);
     }
 }

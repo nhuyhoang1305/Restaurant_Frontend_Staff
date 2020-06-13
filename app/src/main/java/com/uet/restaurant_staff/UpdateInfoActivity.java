@@ -95,29 +95,29 @@ public class UpdateInfoActivity extends AppCompatActivity {
                 headers.put("Authorization", Common.buildJWT(Common.API_KEY));
                 mCompositeDisposable.add(
                         mIRestaurantAPI.updateRestaurantOwner(headers,
-                                edit_user_name.getText().toString(),
                                 edit_user_phone_number.getText().toString(),
-                                Common.currentRestaurantOwner.getRestaurantId(),
-                                0)
+                                edit_user_name.getText().toString(),
+                                1,
+                                1)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe(updateUserModel -> {
+                                .subscribe(updateRestaurantOwnerModel -> {
 
-                                            if (updateUserModel.isSuccess()){
+                                            if (updateRestaurantOwnerModel.isSuccess()){
                                                 // If user has been update, just refesh again
                                                 mCompositeDisposable.add(
                                                         mIRestaurantAPI.getRestaurantOwner(headers)
                                                                 .subscribeOn(Schedulers.io())
                                                                 .observeOn(AndroidSchedulers.mainThread())
-                                                                .subscribe(userModel -> {
+                                                                .subscribe(restaurantownerModel -> {
 
-                                                                            if (userModel.isSuccess()){
-                                                                                Common.currentRestaurantOwner = userModel.getResult().get(0);
+                                                                            if (restaurantownerModel.isSuccess()){
+                                                                                Common.currentRestaurantOwner = restaurantownerModel.getResult().get(0);
                                                                                 startActivity(new Intent(UpdateInfoActivity.this, HomeActivity.class));
                                                                                 finish();
                                                                             }
                                                                             else{
-                                                                                Toast.makeText(UpdateInfoActivity.this, "[GET USER RESULT]" + userModel.getResult(), Toast.LENGTH_SHORT).show();
+                                                                                Toast.makeText(UpdateInfoActivity.this, "[GET USER RESULT]" + restaurantownerModel.getResult(), Toast.LENGTH_SHORT).show();
                                                                             }
                                                                             mDialog.dismiss();
                                                                         },
@@ -129,7 +129,7 @@ public class UpdateInfoActivity extends AppCompatActivity {
                                             }
                                             else{
                                                 mDialog.dismiss();
-                                                Toast.makeText(UpdateInfoActivity.this, "[UPDATE USER API RETURN]" + updateUserModel.getMessage(), Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(UpdateInfoActivity.this, "[UPDATE USER API RETURN]" + updateRestaurantOwnerModel.getMessage(), Toast.LENGTH_SHORT).show();
                                             }
 
                                         },

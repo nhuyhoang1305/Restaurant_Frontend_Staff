@@ -1,5 +1,7 @@
 package com.uet.restaurant_staff.Model;
 
+import com.uet.restaurant_staff.Common.Common;
+
 public class OrderDetail {
     private int orderId;
     private int itemId;
@@ -9,6 +11,12 @@ public class OrderDetail {
     private String name;
     private String description;
     private String image;
+
+    public String convert(String _image){
+        String words[] = _image.split("/");
+        return new StringBuilder().append(Common.API_RESTAURANT_ENDPOINT)
+                .append(words[3]).toString();
+    }
 
     public int getOrderId() {
         return orderId;
@@ -67,7 +75,7 @@ public class OrderDetail {
     }
 
     public String getImage() {
-        return image;
+        return convert(image);
     }
 
     public void setImage(String image) {

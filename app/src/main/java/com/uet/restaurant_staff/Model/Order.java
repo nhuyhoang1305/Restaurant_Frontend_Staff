@@ -1,18 +1,57 @@
 package com.uet.restaurant_staff.Model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class Order {
+    @SerializedName("OrderId")
+    @Expose
     private int orderId;
-    private int orderStatus;
-    private int restaurantId;
+
+    @SerializedName("OrderFBID")
+    @Expose
+    private String orderFBID;
+
+    @SerializedName("OrderPhone")
+    @Expose
     private String orderPhone;
+
+    @SerializedName("OrderName")
+    @Expose
     private String orderName;
+
+    @SerializedName("OrderAddress")
+    @Expose
     private String orderAddress;
-    private String transactionId;
+
+    @SerializedName("OrderStatus")
+    @Expose
+    private int orderStatus;
+
+    @SerializedName("OrderDate")
+    @Expose
     private Date orderDate;
+
+    @SerializedName("RestaurantId")
+    @Expose
+    private int restaurantId;
+
+    @SerializedName("TransactionId")
+    @Expose
+    private String transactionId;
+
+    @SerializedName("COD")
+    @Expose
     private boolean cod;
+
+    @SerializedName("TotalPrice")
+    @Expose
     private Double totalPrice;
+
+    @SerializedName("NumOfItem")
+    @Expose
     private int numOfItem;
 
     public int getOrderId() {

@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -18,7 +19,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.uet.restaurant_staff.Adapter.MyOrderAdapter;
 import com.uet.restaurant_staff.Common.Common;
 import com.uet.restaurant_staff.Interface.ILoadMore;
@@ -68,7 +73,33 @@ public class HomeActivity extends AppCompatActivity
         init();
         initView();
 
+        subscribeToTopic(Common.getTopicChannel(Common.currentRestaurantOwner.getRestaurantId()));
+
         getMaxOrder();
+    }
+
+    private void subscribeToTopic(String topicChannel) {
+        FirebaseMessaging.getInstance()
+                .subscribeToTopic(topicChannel)
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(HomeActivity.this, "Subscribe failed! You may not receive new order notification ", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            // Show or not show it up to you
+                            Toast.makeText(HomeActivity.this, "Subscribe success!", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(HomeActivity.this, "Failed: " + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     private void getMaxOrder() {
@@ -86,7 +117,7 @@ public class HomeActivity extends AppCompatActivity
                         maxData = maxOrderModel.getResult().get(0).getMaxRowNum();
                         mDialog.dismiss();
 
-                        getAllOrder(0, 10);
+                        getAllOrder(0, 10, false);
                     }
 
                 }, throwable -> {
@@ -95,7 +126,7 @@ public class HomeActivity extends AppCompatActivity
                 }));
     }
 
-    private void getAllOrder(int from, int to) {
+    private void getAllOrder(int from, int to, boolean isRefresh) {
         Log.d(TAG, "getAllOrder: called!!");
         mDialog.show();
         HashMap<String, String> headers = new HashMap<>();
@@ -118,9 +149,20 @@ public class HomeActivity extends AppCompatActivity
                                 rv_order.setLayoutAnimation(mLayoutAnimationController);
                             }
                             else {
-                                mOrderList.remove(mOrderList.size() - 1);
-                                mOrderList = orderModel.getResult();
-                                mAdapter.addItem(mOrderList);
+                                if (!isRefresh){
+                                    mOrderList.remove(mOrderList.size() - 1);
+                                    mOrderList = orderModel.getResult();
+                                    mAdapter.addItem(mOrderList);
+                                }
+                                else{
+                                    mOrderList = new ArrayList<>();
+                                    mOrderList = orderModel.getResult();
+                                    mAdapter = new MyOrderAdapter(this, mOrderList, rv_order);
+                                    mAdapter.setILoadMore(this);
+
+                                    rv_order.setAdapter(mAdapter);
+                                    rv_order.setLayoutAnimation(mLayoutAnimationController);
+                                }
                             }
                         }
 
@@ -189,6 +231,7 @@ public class HomeActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            getAllOrder(0, 10, true);
             return true;
         }
 
@@ -228,7 +271,7 @@ public class HomeActivity extends AppCompatActivity
             mAdapter.notifyItemInserted(mOrderList.size()-1);
 
             // Get next 10 item
-            getAllOrder(mAdapter.getItemCount()+1, mAdapter.getItemCount()+10);
+            getAllOrder(mAdapter.getItemCount()+1, mAdapter.getItemCount()+10, false);
 
             mAdapter.notifyDataSetChanged();
             mAdapter.setLoaded();
