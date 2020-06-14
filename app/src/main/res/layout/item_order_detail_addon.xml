@@ -68,14 +68,16 @@
                 app:expansion_toggleOnClick="true">
 
                 <!-- HEADER -->
-                <TextView
-                    android:text="Add On"
-                    android:textSize="22sp"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
 
                 <!-- HEADER INDICATOR-->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Add On"
+                    android:textSize="22sp" />
+
                 <ImageView
                     android:id="@+id/headerInicator"
                     android:layout_gravity="center_vertical|right"

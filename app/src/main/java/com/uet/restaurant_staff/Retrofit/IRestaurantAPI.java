@@ -6,6 +6,7 @@ import com.uet.restaurant_staff.Model.OrderDetailModel;
 import com.uet.restaurant_staff.Model.OrderModel;
 import com.uet.restaurant_staff.Model.RestaurantOwnerModel;
 import com.uet.restaurant_staff.Model.TokenModel;
+import com.uet.restaurant_staff.Model.UpdateOrderModel;
 import com.uet.restaurant_staff.Model.UpdateRestaurantOwnerModel;
 
 import java.util.Map;
@@ -17,6 +18,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface IRestaurantAPI {
@@ -56,4 +58,10 @@ public interface IRestaurantAPI {
     @FormUrlEncoded
     Observable<TokenModel> updateTokenToServer(@HeaderMap Map<String, String> headers,
                                                @Field("token") String token);
+
+    @PUT("updateOrder")
+    @FormUrlEncoded
+    Observable<UpdateOrderModel> updateOrderStatus(@HeaderMap Map<String, String> headers,
+                                                   @Field("orderId") int orderId,
+                                                   @Field("orderStatus") int orderStatus);
 }

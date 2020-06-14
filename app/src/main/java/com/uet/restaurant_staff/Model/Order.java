@@ -54,6 +54,14 @@ public class Order {
     @Expose
     private int numOfItem;
 
+    public String getOrderFBID() {
+        return orderFBID;
+    }
+
+    public void setOrderFBID(String orderFBID) {
+        this.orderFBID = orderFBID;
+    }
+
     public int getOrderId() {
         return orderId;
     }

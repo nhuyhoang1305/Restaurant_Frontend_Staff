@@ -102,4 +102,19 @@ public class Common {
     public static String getTopicChannel(int restaurantId) {
         return new StringBuilder("Restaurant_").append(restaurantId).toString();
     }
+
+    public static int convertStringToStatus(String toString) {
+        switch (toString) {
+            case "Placed":
+                return 0;
+            case "Shipping":
+                return 1;
+            case "Shipped":
+                return 2;
+            case "Cancelled":
+                return -1;
+            default:
+                return -1;
+        }
+    }
 }
