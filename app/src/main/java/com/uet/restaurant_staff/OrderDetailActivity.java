@@ -13,7 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -121,13 +121,14 @@ public class OrderDetailActivity extends AppCompatActivity {
 
     private void initStatusSpinner() {
         Log.d(TAG, "initStatusSpinner: called!!");
-        List<Status> statusList = new ArrayList<Status>();
+        List<Status> statusList = new ArrayList<>();
 
         statusList.add(new Status(0, "Placed"));
         statusList.add(new Status(1, "Shipping"));
         statusList.add(new Status(2, "Shipped"));
         statusList.add(new Status(-1, "Cancelled"));
 
+        @SuppressWarnings("unchecked")
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, statusList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_status.setAdapter(adapter);
@@ -184,9 +185,9 @@ public class OrderDetailActivity extends AppCompatActivity {
                         if (tokenModel.isSuccess()){
                             Map<String, String> messageSend = new HashMap<>();
                             messageSend.put(Common.NOTIFIC_TITLE, "Your order has been updated");
-                            messageSend.put(Common.NOTIFIC_CONTENT, new StringBuilder("Your order ")
-                            .append("has been update to ")
-                            .append(Common.convertStatusToString(Common.currentOrder.getOrderStatus())).toString());
+                            messageSend.put(Common.NOTIFIC_CONTENT, "Your order " +
+                                    "has been update to " +
+                                    Common.convertStatusToString(Common.currentOrder.getOrderStatus()));
 
                             FCMSendData fcmSendData = new FCMSendData(tokenModel.getResult().get(0).getToken(), messageSend);
 

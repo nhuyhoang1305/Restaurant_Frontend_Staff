@@ -39,7 +39,7 @@
 
             <TextView
                 android:id="@+id/tv_order_number"
-
+                android:fontFamily="@font/nunitobold"
                 android:text="Order #1234"
                 android:textSize="22sp"
                 android:layout_width="wrap_content"
@@ -52,6 +52,7 @@
 
                 <TextView
                     android:text="Status"
+                    android:fontFamily="@font/nunitoitalic"
                     android:textSize="18sp"
                     android:layout_marginRight="8dp"
                     android:layout_width="wrap_content"
@@ -59,6 +60,7 @@
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/spinner_status"
+                    android:fontFamily="@font/nunitoitalic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

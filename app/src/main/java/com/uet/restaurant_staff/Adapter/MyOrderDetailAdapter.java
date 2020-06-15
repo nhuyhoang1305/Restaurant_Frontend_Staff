@@ -1,6 +1,7 @@
 package com.uet.restaurant_staff.Adapter;
 
 import android.content.Context;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +25,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MyOrderDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private Context mContext;
-    private List<OrderDetail> mOrderDetailList;
+    //private final String TAG = MyOrderDetailAdapter.class.getSimpleName();
+    Context mContext;
+    List<OrderDetail> mOrderDetailList;
 
     public MyOrderDetailAdapter(Context context, List<OrderDetail> orderDetailList) {
         mContext = context;
@@ -37,7 +39,7 @@ public class MyOrderDetailAdapter extends RecyclerView.Adapter<RecyclerView.View
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return viewType == 0 ? new MyViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_order_detail, parent, false))
                 :
-                new MyViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_order_detail_addon, parent, false));
+                new MyViewHolderAddon(LayoutInflater.from(mContext).inflate(R.layout.item_order_detail_addon, parent, false));
     }
 
     @Override
@@ -55,13 +57,17 @@ public class MyOrderDetailAdapter extends RecyclerView.Adapter<RecyclerView.View
             myViewHolder.tv_food_name.setText(mOrderDetailList.get(position).getName());
             myViewHolder.tv_food_quantity.setText(new StringBuilder("Quantity: ").append(mOrderDetailList.get(position).getQuantity()));
             myViewHolder.tv_food_size.setText(new StringBuilder("Size: ").append(mOrderDetailList.get(position).getSize()));
-
+            //Log.d(TAG, mOrderDetailList.get(position).getAddOn());
+            //myViewHolder.tv_food_size.setText("TEST XEM CÓ BỊ GÌ KHÔNGGGGG");
+            //myViewHolder.tv_add_on.setText("TEST XEM CÓ BỊ GÌ KHÔNGGGGG");
             List<Addon> addons = new Gson().fromJson(mOrderDetailList.get(position).getAddOn(),
                     new TypeToken<List<Addon>>(){}.getType());
             StringBuilder add_on_text = new StringBuilder();
             for (Addon addon: addons) {
                 add_on_text.append(addon.getName()).append("\n");
             }
+
+
             myViewHolder.tv_add_on.setText(add_on_text);
         }
     }

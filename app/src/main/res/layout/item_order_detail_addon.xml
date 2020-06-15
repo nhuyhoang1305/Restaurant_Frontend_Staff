@@ -32,13 +32,14 @@
                     android:id="@+id/tv_food_name"
                     android:text="Food name"
                     android:textSize="22sp"
-
+                    android:fontFamily="@font/nunitobold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/tv_food_quantity"
                     android:text="Quantity: 2"
+                    android:fontFamily="@font/nunitoitalic"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -46,6 +47,7 @@
                 <TextView
                     android:id="@+id/tv_food_size"
                     android:text="Size: Large"
+                    android:fontFamily="@font/nunitoitalic"
                     android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -74,7 +76,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:fontFamily="@font/nunitobold"
                     android:text="Add On"
                     android:textSize="22sp" />
 
@@ -98,7 +100,7 @@
                     android:id="@+id/tv_add_on"
                     android:text="Add On"
                     android:textSize="16sp"
-
+                    android:fontFamily="@font/nunitoitalic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

@@ -1,6 +1,7 @@
 package com.uet.restaurant_staff.Retrofit;
 
 import com.uet.restaurant_staff.Model.GetKeyModel;
+import com.uet.restaurant_staff.Model.HotFoodModel;
 import com.uet.restaurant_staff.Model.MaxOrderModel;
 import com.uet.restaurant_staff.Model.OrderDetailModel;
 import com.uet.restaurant_staff.Model.OrderModel;
@@ -53,6 +54,9 @@ public interface IRestaurantAPI {
     @GET("token")
     Observable<TokenModel> getToken(@HeaderMap Map<String, String> headers,
                                     @Query("key") String key);
+
+    @GET("hotFood")
+    Observable<HotFoodModel> getHotFood(@HeaderMap Map<String, String> headers);
 
     @POST("token")
     @FormUrlEncoded

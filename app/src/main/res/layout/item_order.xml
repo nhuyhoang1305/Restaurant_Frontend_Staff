@@ -21,14 +21,14 @@
                 android:id="@+id/txt_order_number"
                 android:text="Order #1234"
                 android:textSize="22sp"
-
+                android:fontFamily="@font/nunitobold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/txt_order_status"
                 android:text="Processing"
-
+                android:fontFamily="@font/nunitoitalic"
                 android:textColor="@color/bt_border_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -36,12 +36,14 @@
             <TextView
                 android:id="@+id/txt_order_phone"
                 android:text="Phone"
+                android:fontFamily="@font/nunitoitalic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/txt_order_address"
                 android:text="Address"
+                android:fontFamily="@font/nunitoitalic"
                 android:textStyle="italic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -49,6 +51,7 @@
             <TextView
                 android:id="@+id/txt_payment_method"
                 android:text="COD"
+                android:fontFamily="@font/nunitoitalic"
                 android:textStyle="italic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -69,7 +72,7 @@
 
                 <TextView
                     android:text="Order on"
-
+                    android:fontFamily="@font/nunitoitalic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -83,12 +86,14 @@
                     android:text="05/04/2019"
                     android:textSize="14sp"
                     android:textStyle="italic"
+                    android:fontFamily="@font/nunitoitalic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/txt_order_total_price"
                     android:text="$180"
+                    android:fontFamily="@font/nunitobold"
                     android:textSize="20sp"
                     android:textColor="@color/button_color"
                     android:gravity="right"
@@ -108,7 +113,7 @@
                 <TextView
                     android:id="@+id/txt_num_of_item"
                     android:text="Num of Item 2"
-
+                    android:fontFamily="@font/nunitoitalic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

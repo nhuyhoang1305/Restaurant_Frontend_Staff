@@ -32,7 +32,7 @@
 
         <TextView
             android:text="Thông tin người dùng"
-
+            android:fontFamily="@font/nunitobold"
             android:textColor="@color/button_color"
             android:textSize="20sp"
             android:layout_width="wrap_content"
@@ -62,6 +62,7 @@
                     <EditText
                         android:id="@+id/edit_user_name"
                         android:hint="Tên"
+                        android:fontFamily="@font/nunitoitalic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
@@ -85,6 +86,7 @@
                     <EditText
                         android:id="@+id/edit_user_phone_number"
                         android:hint="Số điện thoại"
+                        android:fontFamily="@font/nunitoitalic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
@@ -100,7 +102,7 @@
         android:id="@+id/btn_update"
         android:text="UPDATE"
         android:textColor="@android:color/white"
-
+        android:fontFamily="@font/nunitobold"
         android:layout_margin="8dp"
         app:layout_alignSelf="flex_start"
         android:background="@drawable/border_button"

@@ -27,7 +27,7 @@
                 android:id="@+id/tv_food_name"
                 android:text="Food name"
                 android:textSize="22sp"
-
+                android:fontFamily="@font/nunitobold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -35,6 +35,7 @@
                 android:id="@+id/tv_food_quantity"
                 android:text="Quantity: 2"
                 android:textSize="16sp"
+                android:fontFamily="@font/nunitoitalic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -42,6 +43,7 @@
                 android:id="@+id/tv_food_size"
                 android:text="Size: Large"
                 android:textSize="16sp"
+                android:fontFamily="@font/nunitoitalic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
