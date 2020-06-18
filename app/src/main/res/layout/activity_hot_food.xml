@@ -22,9 +22,18 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/piechar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/piechar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </LinearLayout>
 
 </LinearLayout>

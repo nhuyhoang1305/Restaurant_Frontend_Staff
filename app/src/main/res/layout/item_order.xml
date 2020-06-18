@@ -2,120 +2,132 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="15dp">
 
     <LinearLayout
-        android:padding="8dp"
+        android:id="@+id/orders_bg"
         android:orientation="horizontal"
-        android:weightSum="10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
             android:orientation="vertical"
-            android:weightSum="10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/txt_order_number"
-                android:text="Order #1234"
-                android:textSize="22sp"
-                android:fontFamily="@font/nunitobold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="left">
+                    <TextView
+                        android:id="@+id/txt_order_number"
+                        android:text="Order #1234"
+                        android:textColor="@android:color/white"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:paddingRight="20dp"
+                        android:paddingLeft="10dp"
+                        android:background="@drawable/bg_order_text"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/nunitobold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/txt_order_status"
-                android:text="Processing"
-                android:fontFamily="@font/nunitoitalic"
-                android:textColor="@color/bt_border_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/txt_order_phone"
+                        android:text="Phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"/>
 
-            <TextView
-                android:id="@+id/txt_order_phone"
-                android:text="Phone"
-                android:fontFamily="@font/nunitoitalic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/txt_order_address"
+                        android:text="Address"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"/>
 
-            <TextView
-                android:id="@+id/txt_order_address"
-                android:text="Address"
-                android:fontFamily="@font/nunitoitalic"
-                android:textStyle="italic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/txt_payment_method"-->
+<!--                        android:text="COD"-->
+<!--                        android:textStyle="italic"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"/>-->
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/txt_payment_method"
-                android:text="COD"
-                android:fontFamily="@font/nunitoitalic"
-                android:textStyle="italic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:id="@+id/txt_order_status"
+                        android:layout_gravity="right"
+                        android:text="Processing"
+                        android:fontFamily="@font/nunitobold"
+                        android:textColor="@color/button_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_gravity="right"
+                        android:id="@+id/txt_order_date"
+                        android:text="05/04/2019"
+                        android:textSize="14sp"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_gravity="right"
+                        android:id="@+id/txt_payment_method"
+                        android:text="COD"
+                        android:textStyle="italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"/>
 
+                </LinearLayout>
+            </LinearLayout>
             <View
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@android:color/darker_gray"
+                android:background="@drawable/gradient_color"
                 android:layout_width="match_parent"
-                android:layout_height="1dip" />
+                android:layout_height="0.6dip" />
 
             <LinearLayout
-                android:layout_marginLeft="8dp"
                 android:layout_gravity="center_vertical"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp">
 
                 <TextView
-                    android:text="Order on"
-                    android:fontFamily="@font/nunitoitalic"
+                    android:id="@+id/txt_num_of_item"
+                    android:gravity="center_horizontal"
+                    android:text="Num of Item 2"
+                    android:fontFamily="@font/nunitobold"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <ImageView
-                    android:src="@drawable/ic_date_range_gray_24dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/txt_order_date"
-                    android:text="05/04/2019"
-                    android:textSize="14sp"
-                    android:textStyle="italic"
-                    android:fontFamily="@font/nunitoitalic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"/>
 
                 <TextView
                     android:id="@+id/txt_order_total_price"
                     android:text="$180"
-                    android:fontFamily="@font/nunitobold"
                     android:textSize="20sp"
-                    android:textColor="@color/button_color"
+                    android:textColor="@android:color/holo_red_light"
                     android:gravity="right"
                     android:textStyle="bold"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/txt_num_of_item"
-                    android:text="Num of Item 2"
-                    android:fontFamily="@font/nunitoitalic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"/>
 
             </LinearLayout>
 

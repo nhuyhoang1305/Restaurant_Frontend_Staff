@@ -2,6 +2,7 @@ package com.uet.restaurant_staff.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -124,6 +125,30 @@ public class MyOrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             } else {
                 myViewHolder.txt_payment_method.setText(new StringBuilder("TransID: ").append(mOrderList.get(position).getTransactionId()));
             }
+
+            //set color :v
+            String stt = Common.convertStatusToString(mOrderList.get(position).getOrderStatus());
+            if(stt.equalsIgnoreCase("Shipped")){
+                int currentColor = Color.rgb(240,255,240);
+                myViewHolder.itemView.setBackgroundColor(currentColor);
+                myViewHolder.txt_order_status.setTextColor(Color.rgb(46, 204, 113));
+            }
+            else if(stt.equalsIgnoreCase("Shipping")){
+                int currentColor = Color.rgb(255,250,205);
+                myViewHolder.itemView.setBackgroundColor(currentColor);
+                myViewHolder.txt_order_status.setTextColor(Color.rgb(0, 0, 0));
+            }
+            else if(stt.equalsIgnoreCase("Placed")){
+                int currentColor = Color.rgb(255,228,225);
+                myViewHolder.itemView.setBackgroundColor(currentColor);
+                myViewHolder.txt_order_status.setTextColor(Color.rgb(240, 52, 52));
+            }
+            else if(stt.equalsIgnoreCase("Cancelled")){
+                int currentColor = Color.rgb(238, 238, 238);
+                myViewHolder.itemView.setBackgroundColor(currentColor);
+                myViewHolder.txt_order_status.setTextColor(Color.rgb(0, 0, 0));
+            }
+
 
             myViewHolder.setIRecyclerItemClickListener((view, index) -> {
                 Common.currentOrder = mOrderList.get(position);

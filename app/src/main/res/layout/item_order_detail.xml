@@ -2,7 +2,10 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp">
 
     <LinearLayout
         android:padding="8dp"
@@ -14,8 +17,8 @@
             android:id="@+id/img_food_image"
             android:scaleType="fitXY"
             android:gravity="center"
-            android:layout_width="80dp"
-            android:layout_height="80dp" />
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
 
         <LinearLayout
             android:layout_marginLeft="8dp"
@@ -26,7 +29,7 @@
             <TextView
                 android:id="@+id/tv_food_name"
                 android:text="Food name"
-                android:textSize="22sp"
+                android:textSize="14sp"
                 android:fontFamily="@font/nunitobold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -34,7 +37,7 @@
             <TextView
                 android:id="@+id/tv_food_quantity"
                 android:text="Quantity: 2"
-                android:textSize="16sp"
+                android:textSize="13sp"
                 android:fontFamily="@font/nunitoitalic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -42,7 +45,7 @@
             <TextView
                 android:id="@+id/tv_food_size"
                 android:text="Size: Large"
-                android:textSize="16sp"
+                android:textSize="13sp"
                 android:fontFamily="@font/nunitoitalic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

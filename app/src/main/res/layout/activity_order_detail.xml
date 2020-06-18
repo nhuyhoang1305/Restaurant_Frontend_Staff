@@ -41,9 +41,10 @@
                 android:id="@+id/tv_order_number"
                 android:fontFamily="@font/nunitobold"
                 android:text="Order #1234"
-                android:textSize="22sp"
+                android:textSize="18sp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"/>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -53,16 +54,26 @@
                 <TextView
                     android:text="Status"
                     android:fontFamily="@font/nunitoitalic"
-                    android:textSize="18sp"
+                    android:textColor="@color/button_color"
+                    android:textSize="15sp"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginRight="8dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"/>
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/spinner_status"
+                    android:layout_width="300dp"
+                    android:dropDownWidth="300dp"
+                    android:layout_height="?attr/dropdownListPreferredItemHeight"
+                    android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
                     android:fontFamily="@font/nunitoitalic"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:background="@drawable/bg_spinner"
+                    android:popupElevation="3dp"
+                    android:stateListAnimator="@drawable/sla_spinner"
+                    />
 
             </LinearLayout>
 

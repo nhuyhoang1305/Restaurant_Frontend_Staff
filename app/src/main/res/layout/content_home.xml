@@ -11,15 +11,20 @@
     tools:showIn="@layout/app_bar_home">
 
     <LinearLayout
-        android:padding="16dp"
+        android:padding="8dp"
         android:background="@color/divider"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@mipmap/ic_listlist_foreground"
+            android:layout_gravity="center_vertical"/>
         <TextView
-            android:text="OrderList"
-            android:textSize="22sp"
+            android:text="ORDER LIST"
+            android:layout_gravity="center_vertical"
+            android:textSize="16sp"
             android:textColor="@color/button_color"
             android:fontFamily="@font/nunitobold"
             android:layout_width="wrap_content"
@@ -29,6 +34,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_order"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
