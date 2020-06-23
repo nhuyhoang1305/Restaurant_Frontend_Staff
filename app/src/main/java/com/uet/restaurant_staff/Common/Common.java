@@ -17,7 +17,7 @@ import com.uet.restaurant_staff.Model.RestaurantOwner;
 import com.uet.restaurant_staff.R;
 
 public class Common {
-    public static final String API_RESTAURANT_ENDPOINT = "http://192.168.1.10:3000/";
+    public static final String API_RESTAURANT_ENDPOINT = "http://192.168.0.105:3000/";
     public static String API_KEY = "1305";
     public static final String REMEMBER_FBID = "REMEMBER_FBID";
     public static final String API_KEY_TAG = "API_KEY";

@@ -3,11 +3,14 @@ package com.uet.restaurant_staff;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +27,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.uet.restaurant_staff.Adapter.MyOrderAdapter;
 import com.uet.restaurant_staff.Common.Common;
@@ -51,7 +55,7 @@ public class HomeActivity extends AppCompatActivity
     private IRestaurantAPI mIMyRestaurantAPI;
     private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
     private AlertDialog mDialog;
-
+    private TextView txt_owner_name, txt_restaurant_name;
     @BindView(R.id.rv_order)
     RecyclerView rv_order;
 
@@ -70,6 +74,66 @@ public class HomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+
+        View headerView = navigationView.getHeaderView(0);
+
+        txt_owner_name = headerView.findViewById(R.id.txt_owner_name);
+        txt_restaurant_name = headerView.findViewById(R.id.txt_restaurant_name);
+
+        if (Common.currentRestaurantOwner != null && !TextUtils.isEmpty(Common.currentRestaurantOwner.getName())){
+            txt_owner_name.setText(Common.currentRestaurantOwner.getName());
+        }
+
+        if (Common.currentRestaurantOwner != null && Common.currentRestaurantOwner.getRestaurantId() > 0){
+            String restaurant_name = "";
+            switch (Common.currentRestaurantOwner.getRestaurantId()){
+                case 1: {
+                    restaurant_name = "Restaurant A";
+                    break;
+                }
+                case 2: {
+                    restaurant_name = "Restaurant B";
+                    break;
+                }
+                case 3: {
+                    restaurant_name = "Restaurant C";
+                    break;
+                }
+                case 4: {
+                    restaurant_name = "Restaurant D";
+                    break;
+                }
+                case 5: {
+                    restaurant_name = "Restaurant E";
+                    break;
+                }
+                case 6: {
+                    restaurant_name = "Restaurant F";
+                    break;
+                }
+                case 7: {
+                    restaurant_name = "Restaurant G";
+                    break;
+                }
+                default: {
+                    restaurant_name = "Can't find restaurant name";
+                    break;
+                }
+            }
+            txt_restaurant_name.setText(restaurant_name);
+        }
+
 
         init();
         initView();
@@ -251,21 +315,36 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.nav_hot_food) {
             Intent intent = new Intent(HomeActivity.this, HotFoodActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.listOrder) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.update_infomation) {
+            startActivity(new Intent(HomeActivity.this, UpdateInfoActivity.class));
+        } else if (id == R.id.logOut) {
+            logOut();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void logOut() {
+        Log.d(TAG, "logOut: called!!");
+        //Alert dialog to confirm
+        AlertDialog confimrDialog = new AlertDialog.Builder(this)
+                .setTitle("Đăng xuất")
+                .setMessage("Bạn có thực sự muốn đăng xuất?")
+                .setNegativeButton("CANCLE", (dialog1, which) -> dialog1.dismiss())
+                .setPositiveButton("OK", (dialog12, which) -> {
+                    Common.currentOrder = null;
+                    Common.currentRestaurantOwner = null;
+                    FirebaseAuth.getInstance().signOut();
+                    Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); //clear all previous activity
+                    startActivity(intent);
+                    finish();
+                }).create();
+        confimrDialog.show();
     }
 
     @Override

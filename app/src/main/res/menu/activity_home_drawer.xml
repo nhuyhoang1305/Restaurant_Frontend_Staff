@@ -9,15 +9,15 @@
             android:icon="@drawable/fire"
             android:title="Hot Food" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/listOrder"
             android:icon="@drawable/listorder"
             android:title="@string/menu_gallery" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/update_infomation"
             android:icon="@drawable/gear"
             android:title="@string/menu_slideshow" />
         <item
-            android:id="@+id/nav_tools"
+            android:id="@+id/logOut"
             android:icon="@drawable/logout"
             android:title="@string/menu_tools" />
     </group>
